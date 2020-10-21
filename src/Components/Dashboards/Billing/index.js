@@ -1,19 +1,19 @@
-import React, { useState, useEffect, Fragment } from "react";
-import axios from "axios";
-import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
-import TopRow from "./Examples/TopRow";
-import FullWidthBar from "./Examples/FullWidthBar";
+import React, { useState, useEffect, Fragment } from 'react';
+import axios from 'axios';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import TopRow from './Examples/TopRow';
+import FullWidthBar from './Examples/FullWidthBar';
 
-import PageTitle from "../../Layout/AppMain/PageTitle";
-import BottomRow from "./Examples/BottomRow";
+import PageTitle from '../../Layout/AppMain/PageTitle';
+import BottomRow from './Examples/BottomRow';
 //Used to format numbers with an abbreviation: K (thousands) and M (Millions)
 function numericalFormatter(num) {
   return num > 999
     ? num > 999999999
-      ? (num / 1000000000).toFixed(2) + "B"
+      ? (num / 1000000000).toFixed(2) + 'B'
       : num > 999999
-      ? (num / 1000000).toFixed(2) + "M"
-      : (num / 1000).toFixed(2) + "K"
+      ? (num / 1000000).toFixed(2) + 'M'
+      : (num / 1000).toFixed(2) + 'K'
     : parseFloat(num).toFixed(0);
 }
 
@@ -39,18 +39,18 @@ const BillingDashboard = () => {
 
     axios
       .get(
-        "https://dev-emrreporting.axcension.com/api/dashboard/getfinancialchartitems/asc/imedx/all"
+        'https://dev-emrreporting.axcension.com/api/dashboard/getfinancialchartitems/asc/imedx/all'
       )
       .then((response) => {
         //console.log(response);
-        let months = response.data[1].SeriesValue.split(",");
-        let billed = response.data[5].SeriesValue.split(",");
-        let paid = response.data[9].SeriesValue.split(",");
-        let denied = response.data[7].SeriesValue.split(",");
-        let patientResp = response.data[9].SeriesValue.split(",");
-        let underPayment = response.data[52].SeriesValue.split(",");
-        let CPTCode = response.data[46].SeriesValue.split(",");
-        let topServicesPayed = response.data[27].SeriesValue.split(",");
+        let months = response.data[1].SeriesValue.split(',');
+        let billed = response.data[5].SeriesValue.split(',');
+        let paid = response.data[9].SeriesValue.split(',');
+        let denied = response.data[7].SeriesValue.split(',');
+        let patientResp = response.data[9].SeriesValue.split(',');
+        let underPayment = response.data[52].SeriesValue.split(',');
+        let CPTCode = response.data[46].SeriesValue.split(',');
+        let topServicesPayed = response.data[27].SeriesValue.split(',');
 
         for (let i = 0; i < 12; i++) {
           monthData[i] = months[i];
@@ -61,57 +61,57 @@ const BillingDashboard = () => {
         }
 
         for (let i = 0; i < 5; i++) {
-          underpaymentData[i] = underPayment[i].split("|")[1];
-          underpaymentLabels[i] = underPayment[i].split("|")[0];
+          underpaymentData[i] = underPayment[i].split('|')[1];
+          underpaymentLabels[i] = underPayment[i].split('|')[0];
         }
 
         for (let i = 0; i < 5; i++) {
-          CPTData[i] = CPTCode[i].split("|")[1];
-          CPTLabels[i] = CPTCode[i].split("|")[0];
+          CPTData[i] = CPTCode[i].split('|')[1];
+          CPTLabels[i] = CPTCode[i].split('|')[0];
         }
 
         for (let i = 0; i < 5; i++) {
-          servicesPayerData[i] = topServicesPayed[i].split("|")[1];
-          servicesPayerLabel[i] = topServicesPayed[i].split("|")[0];
+          servicesPayerData[i] = topServicesPayed[i].split('|')[1];
+          servicesPayerLabel[i] = topServicesPayed[i].split('|')[0];
         }
 
         setChartData({
           labels: monthData,
           datasets: [
             {
-              backgroundColor: "#30b1ff",
+              backgroundColor: '#30b1ff',
               borderWidth: 1,
               //hoverBackgroundColor: "rgba(255,99,132,0.4)",
               //hoverBorderColor: "rgba(255,99,132,1)",
-              borderCapStyle: "round",
-              label: "Billed",
+              borderCapStyle: 'round',
+              label: 'Billed',
               data: billedData,
             },
             {
-              backgroundColor: "yellow",
+              backgroundColor: 'yellow',
               borderWidth: 1,
               //hoverBackgroundColor: "rgba(255,99,132,0.4)",
               //hoverBorderColor: "rgba(255,99,132,1)",
-              borderCapStyle: "round",
-              label: "Paid",
+              borderCapStyle: 'round',
+              label: 'Paid',
               data: paidData,
             },
             {
-              backgroundColor: "red",
+              backgroundColor: 'red',
               borderWidth: 1,
               //hoverBackgroundColor: "rgba(255,99,132,0.4)",
               //hoverBorderColor: "rgba(255,99,132,1)",
-              borderCapStyle: "round",
-              label: "Denied",
+              borderCapStyle: 'round',
+              label: 'Denied',
               data: deniedData,
             },
             {
-              backgroundColor: "purple",
+              backgroundColor: 'purple',
               borderWidth: 1,
               //hoverBackgroundColor: "rgba(255,99,132,0.4)",
               //hoverBorderColor: "rgba(255,99,132,1)",
-              borderCapStyle: "round",
-              label: "Patient Resp",
+              borderCapStyle: 'round',
+              label: 'Patient Resp',
               data: patientResp,
             },
           ],
@@ -121,11 +121,11 @@ const BillingDashboard = () => {
           labels: underpaymentLabels,
           datasets: [
             {
-              backgroundColor: ["#30b1ff", "#82ca9d", "#d92550", "#cc65fe"],
+              backgroundColor: ['#30b1ff', '#82ca9d', '#d92550', '#cc65fe'],
               borderWidth: 1,
-              hoverBackgroundColor: "rgba(255,99,132,0.4)",
-              hoverBorderColor: "rgba(255,99,132,1)",
-              borderCapStyle: "round",
+              hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+              hoverBorderColor: 'rgba(255,99,132,1)',
+              borderCapStyle: 'round',
               data: underpaymentData,
             },
           ],
@@ -136,13 +136,13 @@ const BillingDashboard = () => {
           datasets: [
             {
               data: CPTData,
-              backgroundColor: ["#8dace7", "#71deb9", "#ef869e", "#cc65fe"],
+              backgroundColor: ['#8dace7', '#71deb9', '#ef869e', '#cc65fe'],
               hoverBackgroundColor: [
-                "#7097e1",
-                "#4dd6a7",
-                "#eb6886",
-                "#cc65fe",
-                "#ffce56",
+                '#7097e1',
+                '#4dd6a7',
+                '#eb6886',
+                '#cc65fe',
+                '#ffce56',
               ],
             },
           ],
@@ -153,13 +153,13 @@ const BillingDashboard = () => {
           datasets: [
             {
               data: servicesPayerData,
-              backgroundColor: ["#8dace7", "#71deb9", "#ef869e", "#cc65fe"],
+              backgroundColor: ['#8dace7', '#71deb9', '#ef869e', '#cc65fe'],
               hoverBackgroundColor: [
-                "#7097e1",
-                "#4dd6a7",
-                "#eb6886",
-                "#cc65fe",
-                "#ffce56",
+                '#7097e1',
+                '#4dd6a7',
+                '#eb6886',
+                '#cc65fe',
+                '#ffce56',
               ],
             },
           ],
@@ -176,17 +176,18 @@ const BillingDashboard = () => {
     let deniedAmount = 0;
     let AR90Amount = 0;
 
-    axios
-      .get(
-        "https:/dev-emrreporting.axcension.com/api/dashboard/getchartitems/imedx/all"
-      )
+    let axiosInstance = axios.create({
+      baseURL: 'https:/dev-emrreporting.axcension.com',
+    });
+    axiosInstance
+      .get('/api/dashboard/getchartitems/imedx/all')
       .then((response) => {
         console.log(response.data);
 
-        let billedAmountData = response.data[6].SeriesValue.split(",");
-        let deniedAmountData = response.data[12].SeriesValue.split(",");
-        let paidAmountData = response.data[10].SeriesValue.split(",");
-        let AR90amountData = response.data[22].SeriesValue.split(",");
+        let billedAmountData = response.data[6].SeriesValue.split(',');
+        let deniedAmountData = response.data[12].SeriesValue.split(',');
+        let paidAmountData = response.data[10].SeriesValue.split(',');
+        let AR90amountData = response.data[22].SeriesValue.split(',');
 
         for (let num of billedAmountData) {
           billedAmount += parseInt(num);
@@ -201,7 +202,7 @@ const BillingDashboard = () => {
         }
 
         for (let num of AR90amountData) {
-          AR90Amount += parseInt(num.split("|")[1]);
+          AR90Amount += parseInt(num.split('|')[1]);
         }
 
         setKpiData({
@@ -223,20 +224,20 @@ const BillingDashboard = () => {
   return (
     <Fragment>
       <CSSTransitionGroup
-        component="div"
-        transitionName="TabsAnimation"
+        component='div'
+        transitionName='TabsAnimation'
         transitionAppear={true}
         transitionAppearTimeout={0}
         transitionEnter={false}
         transitionLeave={false}
       >
         <PageTitle
-          heading="Billing Dashboard"
-          subheading=""
-          icon="pe-7s-graph opacity-6"
+          heading='Billing Dashboard'
+          subheading=''
+          icon='pe-7s-graph opacity-6'
         />
         <TopRow data={kpiData} />
-        <FullWidthBar name="Historical Claim Trends" data={chartData} />
+        <FullWidthBar name='Historical Claim Trends' data={chartData} />
         {/* Bottom Row */}
         <BottomRow
           underPaymentData={underpaymentData}
