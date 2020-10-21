@@ -177,10 +177,10 @@ const BillingDashboard = () => {
     let AR90Amount = 0;
 
     let axiosInstance = axios.create({
-      baseURL: 'https:/dev-emrreporting.axcension.com',
+      baseURL: 'https:/dev-emrreporting.axcension.com/',
     });
     axiosInstance
-      .get('/api/dashboard/getchartitems/imedx/all')
+      .get('api/dashboard/getchartitems/imedx/all')
       .then((response) => {
         console.log(response.data);
 

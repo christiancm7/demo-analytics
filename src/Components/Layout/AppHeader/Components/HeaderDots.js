@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
-import axios from "axios";
+import React, { Fragment } from 'react';
+import axios from 'axios';
 // import Ionicon from 'react-ionicons';
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoIosNotificationsOutline } from 'react-icons/io';
 
 import {
   UncontrolledDropdown,
@@ -10,27 +10,27 @@ import {
   Nav,
   Button,
   NavItem,
-} from "reactstrap";
+} from 'reactstrap';
 
-import city3 from "../../../../assets/utils/images/dropdown-header/city3.jpg";
-import Tabs from "react-responsive-tabs";
+import city3 from '../../../../assets/utils/images/dropdown-header/city3.jpg';
+import Tabs from 'react-responsive-tabs';
 
 // Dropdown Tabs Content
-import ChatExample from "./TabsContent/ChatExample";
-import TimelineEx from "./TabsContent/TimelineExample";
-import SysErrEx from "./TabsContent/SystemExample";
+import ChatExample from './TabsContent/ChatExample';
+import TimelineEx from './TabsContent/TimelineExample';
+import SysErrEx from './TabsContent/SystemExample';
 
 const tabsContent = [
   {
-    title: "Messages",
+    title: 'Messages',
     content: <ChatExample />,
   },
   {
-    title: "Events",
+    title: 'Events',
     content: <TimelineEx />,
   },
   {
-    title: "System Errors",
+    title: 'System Errors',
     content: <SysErrEx />,
   },
 ];
@@ -54,7 +54,7 @@ class HeaderDots extends React.Component {
   componentDidMount() {
     axios
       .get(
-        "http://dev-emrreporting.axcension.com/api/alerts/GetAlertItems/cmorales"
+        'https://dev-emrreporting.axcension.com/api/alerts/GetAlertItems/cmorales'
       )
       .then(function (response) {
         // handle success
@@ -69,47 +69,47 @@ class HeaderDots extends React.Component {
   render() {
     return (
       <Fragment>
-        <div className="header-dots">
+        <div className='header-dots'>
           <UncontrolledDropdown>
-            <DropdownToggle className="p-0 mr-2" color="link">
-              <div className="icon-wrapper icon-wrapper-alt rounded-circle">
-                <div className="icon-wrapper-bg bg-danger" />
-                <IoIosNotificationsOutline color="#d92550" fontSize="23px" />
-                <div className="badge badge-dot badge-dot-sm badge-danger">
+            <DropdownToggle className='p-0 mr-2' color='link'>
+              <div className='icon-wrapper icon-wrapper-alt rounded-circle'>
+                <div className='icon-wrapper-bg bg-danger' />
+                <IoIosNotificationsOutline color='#d92550' fontSize='23px' />
+                <div className='badge badge-dot badge-dot-sm badge-danger'>
                   Notifications
                 </div>
               </div>
             </DropdownToggle>
-            <DropdownMenu right className="dropdown-menu-xl rm-pointers">
-              <div className="dropdown-menu-header mb-0">
-                <div className="dropdown-menu-header-inner bg-deep-blue">
+            <DropdownMenu right className='dropdown-menu-xl rm-pointers'>
+              <div className='dropdown-menu-header mb-0'>
+                <div className='dropdown-menu-header-inner bg-deep-blue'>
                   <div
-                    className="menu-header-image opacity-1"
+                    className='menu-header-image opacity-1'
                     style={{
-                      backgroundImage: "url(" + city3 + ")",
+                      backgroundImage: 'url(' + city3 + ')',
                     }}
                   />
-                  <div className="menu-header-content text-dark">
-                    <h5 className="menu-header-title">Notifications</h5>
-                    <h6 className="menu-header-subtitle">
+                  <div className='menu-header-content text-dark'>
+                    <h5 className='menu-header-title'>Notifications</h5>
+                    <h6 className='menu-header-subtitle'>
                       You have <b>21</b> unread messages
                     </h6>
                   </div>
                 </div>
               </div>
               <Tabs
-                tabsWrapperClass="body-tabs body-tabs-alt"
+                tabsWrapperClass='body-tabs body-tabs-alt'
                 transform={false}
                 showInkBar={true}
                 items={getTabs()}
               />
               <Nav vertical>
-                <NavItem className="nav-item-divider" />
-                <NavItem className="nav-item-btn text-center">
+                <NavItem className='nav-item-divider' />
+                <NavItem className='nav-item-btn text-center'>
                   <Button
-                    size="sm"
-                    className="btn-shadow btn-wide btn-pill"
-                    color="focus"
+                    size='sm'
+                    className='btn-shadow btn-wide btn-pill'
+                    color='focus'
                   >
                     View Latest Changes
                   </Button>
