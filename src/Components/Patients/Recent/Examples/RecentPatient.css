@@ -1,0 +1,12 @@
+.info-table-container{
+    padding: 1rem;
+}
+.info-table-left, .info-table-right{
+    padding: 1rem;
+}
+.info-table-left p, .info-table-right p{
+    font-weight: 700;
+}
+.info-table-right{
+    background: #e9f7fa;
+}

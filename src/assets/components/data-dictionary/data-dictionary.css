@@ -1,0 +1,10 @@
+.modal-title {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+.modal-content {
+  max-height: 80vh;
+}
+.modal-body {
+  overflow-y: scroll;
+}
