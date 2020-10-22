@@ -176,7 +176,7 @@ const MedicareDashboard = () => {
 
     axios
       .get(
-        "https:/dev-emrreporting.axcension.com/api/dashboard/getchartitems/imedx/all"
+        "https://dev-emrreporting.axcension.com/api/dashboard/getchartitems/imedx/all"
       )
       .then((response) => {
         console.log(response.data);
