@@ -249,4 +249,4 @@ const BillingDashboard = () => {
     </Fragment>
   );
 };
-export default BillingDashboard;
+export default React.memo(BillingDashboard);
